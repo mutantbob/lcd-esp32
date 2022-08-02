@@ -1,0 +1,32 @@
+[package]
+name = "neopixel-esp32"
+version = "0.1.0"
+authors = ["Robert Forsman <git@thoth.purplefrog.com>"]
+edition = "2021"
+resolver = "2"
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true # Symbols are nice and they don't increase the size on Flash
+opt-level = "z"
+
+[features]
+pio = ["esp-idf-sys/pio"]
+
+[dependencies]
+esp-idf-hal = "*"
+esp-idf-sys = { version = "0.31.6", features = ["binstart"] }
+smart-leds = "*"
+embedded-hal = "*"
+st7789 = "*"
+ws2812-esp32-rmt-driver = "*"
+display-interface-spi = "*"
+display-interface = "*"
+#esp32-hal = "*"
+embedded-graphics-core = "*"
+
+[build-dependencies]
+embuild = "0.29"
+anyhow = "1"
