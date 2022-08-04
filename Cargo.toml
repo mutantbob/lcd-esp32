@@ -1,5 +1,5 @@
 [package]
-name = "neopixel-esp32"
+name = "lcd-esp32"
 version = "0.1.0"
 authors = ["Robert Forsman <git@thoth.purplefrog.com>"]
 edition = "2021"
@@ -13,14 +13,18 @@ debug = true # Symbols are nice and they don't increase the size on Flash
 opt-level = "z"
 
 [features]
+
 pio = ["esp-idf-sys/pio"]
+st7789=[ "dep:st7789"]
+mipidsi=[ "dep:mipidsi"]
 
 [dependencies]
 esp-idf-hal = "*"
 esp-idf-sys = { version = "0.31.6", features = ["binstart"] }
 smart-leds = "*"
 embedded-hal = "*"
-st7789 = "*"
+st7789 = { version="0.6.1", optional=true }
+mipidsi = {version="*" , optional=true}
 ws2812-esp32-rmt-driver = "*"
 display-interface-spi = "*"
 display-interface = "*"
